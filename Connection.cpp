@@ -39,6 +39,11 @@ std::string Connection::receive_m(){
 bool is_ip(const std::string& str){
     int points = 0;
     std::string num;
+
+    Add a README file and start coding in a secure, configurable, and dedicated development environment.
+    Add collaborators to this repository
+    
+    Search for people using their GitHub username or email address.
     for (size_t i = 0; i < str.length(); i++)
     {
         if(str.at(i) == 46){  // 46 = .
