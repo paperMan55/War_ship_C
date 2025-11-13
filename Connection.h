@@ -8,7 +8,7 @@
     private:
         int clientSocket;
     public: 
-        Connection(std::string ip_address, int port, bool& out_status);
+        bool connect_s(std::string ip_address, int port);
         void close_c();
         bool send_m(const char* msg);
         bool send_m(std::string msg);

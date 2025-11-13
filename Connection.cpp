@@ -1,4 +1,5 @@
 #include "Connection.h"
+
 #include <iostream>
 #include <netinet/in.h>
 #include <sys/socket.h>
@@ -6,18 +7,20 @@
 #include <cstring>
 #include <arpa/inet.h>
 
-Connection::Connection(std::string ip_address, int port, bool& out_status)
+bool Connection::connect_s(std::string ip_address, int port)
 { 
     std::cout  << "\033[32mConnecting to "<<ip_address<<"\033[0m\n";
     clientSocket = socket(AF_INET, SOCK_STREAM,0);
-
+    
     sockaddr_in serverAddress;
+    
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_port = htons(port);
     inet_pton(AF_INET, ip_address.c_str(), &serverAddress.sin_addr);
 
-    int st =connect(clientSocket,(struct sockaddr*)&serverAddress,sizeof(serverAddress));
-    out_status = (st == 0);
+    int st = connect(clientSocket,(struct sockaddr*)&serverAddress,sizeof(serverAddress));
+    std::cout << (int)st== 0;
+    return ((int)st == 0);
 }
 
 void Connection::close_c(){
@@ -40,10 +43,6 @@ bool is_ip(const std::string& str){
     int points = 0;
     std::string num;
 
-    Add a README file and start coding in a secure, configurable, and dedicated development environment.
-    Add collaborators to this repository
-    
-    Search for people using their GitHub username or email address.
     for (size_t i = 0; i < str.length(); i++)
     {
         if(str.at(i) == 46){  // 46 = .
@@ -66,6 +65,6 @@ bool is_ip(const std::string& str){
         return false;
     }
     return true;
-    
 }
+
 

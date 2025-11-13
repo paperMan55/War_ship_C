@@ -43,6 +43,9 @@ bool Map::set_ship(int x, int y, int length, bool orientation){
 
     return true;
 }
+Ship::Ship(int xx, int yy, int length_, bool horizontal_):x{xx},y{yy},length{length_},horizontal{horizontal_}{
+    
+}
 
 std::ostream& operator<<(std::ostream& os, Map& r ){
     os<<"    0   1   2   3   4   5   6   7   8   9\n  +---+---+---+---+---+---+---+---+---+---+\n";

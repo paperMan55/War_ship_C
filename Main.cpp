@@ -1,17 +1,17 @@
+#include "Connection.h"
+#include "Map.h"
+#include "Game.h"
+
 #include <iostream>
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <cstring>
 #include <arpa/inet.h>
-#include "Connection.h"
-#include "Map.h"
+
 
 
 Connection try_connect(){
-    
-    
-    
     while (true)
     {
         std::cout << "server ip address: ";
@@ -28,7 +28,8 @@ Connection try_connect(){
 
             if(is_ip(ip)){
 
-                Connection conn(ip,std::stoi(port),status);
+                Connection conn;
+                status = conn.connect_s(ip,std::stoi(port));
 
                 if(status){
                     return conn;
@@ -45,12 +46,6 @@ Connection try_connect(){
         {
             std::cout  << "\033[31merror trying to connect to \033[0m"<<ip<<":"<<port<<" \033[31m  *try again*\n\t\tBAD PORT\033[0m\n";
         }
-        
-        
-
-        
-        
-        
 
     }
 }
