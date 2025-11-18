@@ -23,18 +23,18 @@ bool Map::set_ship(int x, int y, int length, bool orientation){
         }
     }
 
-    for (size_t i = x; i < (orientation?x+1:x+length); i++)
+    for (size_t i = y; i < (orientation?y+1:y+length); i++)
     {
-        for (size_t j = y; j < (orientation?y+length:y+1); j++)
+        for (size_t j = x; j < (orientation?x+length:x+1); j++)
         {
             if(map[i][j] == 2){
                 return false;
             }
         }
     }
-    for (size_t i = x; i < (orientation?x+1:x+length); i++)
+    for (size_t i = y; i < (orientation?y+1:y+length); i++)
     {
-        for (size_t j = y; j < (orientation?y+length:y+1); j++)
+        for (size_t j = x; j < (orientation?x+length:x+1); j++)
         {
             map[i][j] = 2;
         }
@@ -56,19 +56,19 @@ std::ostream& operator<<(std::ostream& os, Map& r ){
         {
             switch (r.map[i][j])
             {
-            case 1:
+            case 1:  //acqua colpita
                 os << "\033[36m"<<r.map[i][j];
                 break;
-            case 2:
+            case 2:  //barca
                 
                 os << "\033[32m"<<r.map[i][j];
                 break;
-            case 3:
+            case 3:  //barca colpita
                 
                 os << "\033[31m"<<r.map[i][j];
                 break;
             
-            default:
+            default:   //acqua
             os << r.map[i][j];
                 break;
             }

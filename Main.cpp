@@ -68,7 +68,7 @@ void setup_ships(Map& map){
         orientation = tmp == "y";
         bool can = map.set_ship(x,y,ships[i],orientation);
         if(!can){
-            std::cout << "cant place there, retry.\n";
+            std::cout << "\033[31mcant place there, retry.\033[0m\n";
             i--;
         }else{
             std::cout << map;
@@ -83,8 +83,8 @@ int main(){
     Map a;
     
     std::cout << a;
-    
-    Connection connection = try_connect();
+    setup_ships(a);
+    /*Connection connection = try_connect();
 
     while (true)
     {
@@ -92,8 +92,7 @@ int main(){
         std::cin >> msg;
         connection.send_m(msg);
     }
-    
-
+    */
     return 1;
 }
 

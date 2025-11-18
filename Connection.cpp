@@ -19,7 +19,7 @@ bool Connection::connect_s(std::string ip_address, int port)
     inet_pton(AF_INET, ip_address.c_str(), &serverAddress.sin_addr);
 
     int st = connect(clientSocket,(struct sockaddr*)&serverAddress,sizeof(serverAddress));
-    std::cout << (int)st== 0;
+    std::cout << ((int)st == 0);
     return ((int)st == 0);
 }
 
@@ -45,7 +45,7 @@ bool is_ip(const std::string& str){
 
     for (size_t i = 0; i < str.length(); i++)
     {
-        if(str.at(i) == 46){  // 46 = .
+        if(str.at(i) == 46){  // 46 = punto
             try
             {
                 int a = std::stoi(num);
